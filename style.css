@@ -1,0 +1,76 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+body {
+  &,
+  .container {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 500px;
+    transform-style: preserve-3d;
+
+    .brick {
+      width: 5vw;
+      height: 5vh;
+      background-image: linear-gradient(45deg, #7028e4 0%, #e5b2ca 100%);
+      flex-grow: 1;
+      animation: translateZAnimation 1s ease-in-out forwards;
+    }
+  }
+}
+
+h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 7vmax;
+  color: #000;
+  text-align: center;
+  z-index: 50;
+  animation: toTop 0.5s linear both;
+  animation-delay: 1.7s;
+}
+
+@keyframes translateZAnimation {
+  0% {
+    transform: translateZ(2000px);
+  }
+  100% {
+    transform: translateZ(0px);
+  }
+}
+
+@keyframes toTop {
+  0% {
+    top: 80%;
+    opacity: 0;
+  }
+  100% {
+    top: 50%;
+    opacity: 1;
+  }
+}
